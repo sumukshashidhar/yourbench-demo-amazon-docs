@@ -1,0 +1,36 @@
+hf_configuration:
+  private: false
+  hf_dataset_name: yourbench-aws-bedrock-documentation-example
+
+model_list:
+  - model_name: claude-3-7-sonnet-20250219
+    base_url: https://api.anthropic.com/v1/
+    api_key: $ANTHROPIC_API_KEY
+
+pipeline:
+  ingestion:
+    source_documents_dir: data/
+    output_dir: output/aws-bedrock-documentation-example/processed_documents
+  upload_ingest_to_hub:
+  summarization:
+    max_tokens: 64000
+    token_overlap: 2048
+  chunking:
+    chunking_configuration:
+      chunking_mode: fast_chunking
+      l_max_tokens: 8192 
+      token_overlap: 1024 
+      encoding_name: cl100k_base
+
+      # For multi-hop chunk creation:
+      h_min: 3
+      h_max: 6
+      num_multihops_factor: 5
+  
+  single_shot_question_generation:
+    additional_instructions: "You are given a piece of Amazon Bedrock documentation. Generate questions that a skilled developer or software engineer would ask in FIRST PERSON from the developer's perspective, exactly as if they were asking the question. Do NOT generate questions if there is no significant / relevant educational information in the given chunk of text."
+  multi_hop_question_generation:
+    additional_instructions: "You are given a piece of Amazon Bedrock documentation. Generate questions that a skilled developer or software engineer would ask in FIRST PERSON from the developer's perspective, exactly as if they were asking the question. Do NOT generate questions if there is no significant / relevant educational information in the given chunk of text."
+
+  lighteval:
+  citation_score_filtering:
