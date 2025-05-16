@@ -1,6 +1,6 @@
 # yourbench-demo-amazon-docs
 
-This is a minimal example of using [yourbench](https://github.com/huggingface/yourbench) to generate a dataset of questions from a piece of documentation. Here's a link to a dataset that was generated using this example: [yourbench-aws-bedrock-documentation-example](https://huggingface.co/datasets/yourbench-aws-bedrock-documentation-example).
+This is a minimal example of using [YourBench](https://github.com/huggingface/yourbench) to generate a dataset of questions from a piece of documentation. Here's a link to a dataset that was generated using this example: [Huggingface Dataset](https://huggingface.co/datasets/sumuks/yourbench-aws-bedrock-documentation-example).
 
 ## Usage
 
